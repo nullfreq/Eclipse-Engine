@@ -6,10 +6,10 @@ It's **very** unfinished, because I made this to help myself learn a bit about c
 ***Any and all coding help is appreciated!!!***
 
 ## SCREENSHOTS:
-![screenshot 1](https://raw.githubusercontent.com/nullfreq/Eclipse-Engine/refs/heads/main/0.png)
-![screenshot 2](https://raw.githubusercontent.com/nullfreq/Eclipse-Engine/refs/heads/main/1.png)
-![screenshot 3](https://raw.githubusercontent.com/nullfreq/Eclipse-Engine/refs/heads/main/2.png)
-![screenshot 4](https://raw.githubusercontent.com/nullfreq/Eclipse-Engine/refs/heads/main/3.png)
+![screenshot 1](https://raw.githubusercontent.com/nullfreq/Eclipse-Engine/refs/heads/main/repoAssets/0.png)
+![screenshot 2](https://raw.githubusercontent.com/nullfreq/Eclipse-Engine/refs/heads/main/repoAssets/1.png)
+![screenshot 3](https://raw.githubusercontent.com/nullfreq/Eclipse-Engine/refs/heads/main/repoAssets/2.png)
+![screenshot 4](https://raw.githubusercontent.com/nullfreq/Eclipse-Engine/refs/heads/main//repoAssets/3.png)
 
 ## TO DO:
 - [ ] Input system rewrite (It's fucking atrocious)
