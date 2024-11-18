@@ -3,7 +3,7 @@ WIP Friday Night Funkin' Engine made in [Godot 4.3](https://godotengine.org/)!
 
 It's **very** unfinished, because I made this to help myself learn a bit about coding.
 
-Current version: Pre-release 0.1
+***Any and all coding help is appreciated!!!***
 
 ## TO DO:
 - [ ] Input system rewrite (It's fucking atrocious)
