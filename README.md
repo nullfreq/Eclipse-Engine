@@ -14,6 +14,7 @@ It's **very** unfinished, because I made this to help myself learn a bit about c
 ## TO DO:
 - [ ] Input system rewrite (It's fucking atrocious)
 - [ ] Proper game over + fix bugs (The few there are... oh how awful they are!)
+- [ ] Save which stage you select in Chart Editor and have it use it in PlayScene
 - [ ] Get song events working
 - [ ] Port the other weeks
 - [ ] Finish character editor
