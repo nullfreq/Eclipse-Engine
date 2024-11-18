@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3 uid="uid://dl4g3q5ditlxh"]
+
+[ext_resource type="Script" path="res://scenes/menus/MainMenu.gd" id="1_4bdnv"]
+[ext_resource type="Texture2D" uid="uid://bu73o4u0jo2hs" path="res://assets/images/menus/menuBG.png" id="2_bu2g4"]
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_4bdnv")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+follow_viewport_enabled = true
+scroll_base_scale = Vector2(-0.9, -0.9)
+scroll_ignore_camera_zoom = true
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="BG" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(0, -32)
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("2_bu2g4")
+centered = false
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.06
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Version" type="Label" parent="CanvasLayer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -38.0
+offset_right = 114.0
+offset_bottom = -16.0
+grow_vertical = 0
+text = "Eclipse Engine v0.1 pr1"
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,110 @@
+[gd_scene load_steps=7 format=3 uid="uid://bpwf3d6gtbb5h"]
+
+[ext_resource type="Script" path="res://scenes/editorShit/ChartEditor.gd" id="1_snqlc"]
+[ext_resource type="PackedScene" uid="uid://c1t48mfuiwadk" path="res://scenes/editorShit/chartEditor/EditorGrid.tscn" id="2_0jjrj"]
+[ext_resource type="Texture2D" uid="uid://d3aytoonip82o" path="res://assets/images/menus/menuDesat.png" id="2_jp45d"]
+[ext_resource type="Shader" path="res://assets/shaders/monochromeALT.gdshader" id="3_er18k"]
+[ext_resource type="Script" path="res://scenes/editorShit/chartEditor/ChartNote.gd" id="3_i5k6m"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_63sby"]
+shader = ExtResource("3_er18k")
+
+[node name="ChartEditor" type="Node2D"]
+script = ExtResource("1_snqlc")
+
+[node name="BG" type="Sprite2D" parent="."]
+modulate = Color(1, 0.627451, 0.478431, 1)
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("2_jp45d")
+offset = Vector2(576, 324)
+
+[node name="General HUD" type="CanvasLayer" parent="."]
+
+[node name="Notes" type="CanvasLayer" parent="General HUD"]
+
+[node name="EditorGrid" parent="General HUD/Notes" instance=ExtResource("2_0jjrj")]
+offset_left = 120.0
+offset_top = 40.0
+offset_right = 120.0
+offset_bottom = 40.0
+squareSize = 40
+
+[node name="EditorGrid2" parent="General HUD/Notes" instance=ExtResource("2_0jjrj")]
+offset_left = 280.0
+offset_top = 40.0
+offset_right = 280.0
+offset_bottom = 40.0
+squareSize = 40
+
+[node name="LandRect" type="ColorRect" parent="General HUD/Notes"]
+offset_left = -80.0
+offset_right = -40.0
+offset_bottom = 40.0
+color = Color(0.662745, 0.662745, 0.662745, 1)
+
+[node name="Line2D" type="Line2D" parent="General HUD/Notes"]
+points = PackedVector2Array(280, 40, 280, 680)
+width = 4.0
+default_color = Color(0.956863, 0.643137, 0.376471, 1)
+antialiased = true
+
+[node name="Panel" type="Panel" parent="General HUD"]
+offset_left = 840.0
+offset_top = 40.0
+offset_right = 1160.0
+offset_bottom = 680.0
+
+[node name="TabContainer" type="TabContainer" parent="General HUD/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+tab_alignment = 1
+current_tab = 0
+use_hidden_tabs_for_min_size = true
+
+[node name="File" type="TabBar" parent="General HUD/Panel/TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="Song Info" type="TabBar" parent="General HUD/Panel/TabContainer"]
+visible = false
+layout_mode = 2
+scrolling_enabled = false
+metadata/_tab_index = 1
+
+[node name="Events" type="TabBar" parent="General HUD/Panel/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="Help" type="TabBar" parent="General HUD/Panel/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 3
+
+[node name="HelpText" type="Label" parent="General HUD/Panel/TabContainer/Help"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 16
+text = "Click the tiles in the grids
+Left is opponent
+Right is player
+
+Yeah..."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PreviewNote" type="AnimatedSprite2D" parent="General HUD"]
+modulate = Color(1, 1, 1, 0.5)
+material = SubResource("ShaderMaterial_63sby")
+centered = false
+script = ExtResource("3_i5k6m")
+
+[node name="Area2D" type="Area2D" parent="."]

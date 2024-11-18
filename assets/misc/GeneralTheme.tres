@@ -1,0 +1,35 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://044njekasrd4"]
+
+[ext_resource type="FontFile" uid="uid://0tq52qb75if7" path="res://assets/fonts/vcr.ttf" id="1_t1h7c"]
+[ext_resource type="StyleBox" uid="uid://d2ofcekdkahhd" path="res://assets/misc/StyleBox.tres" id="2_xut8x"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oo2ox"]
+bg_color = Color(1, 0.647059, 0, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iiddq"]
+bg_color = Color(1, 0.647059, 0, 1)
+border_color = Color(1, 0.54902, 0, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[resource]
+default_font = ExtResource("1_t1h7c")
+ItemList/colors/font_color = Color(0.775063, 0.775063, 0.775063, 1)
+ItemList/styles/panel = ExtResource("2_xut8x")
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/constants/outline_size = 7
+Label/font_sizes/font_size = 24
+Label/fonts/font = ExtResource("1_t1h7c")
+OptionButton/constants/arrow_margin = 0
+OptionButton/constants/h_separation = 0
+Panel/styles/panel = ExtResource("2_xut8x")
+PanelContainer/styles/panel = ExtResource("2_xut8x")
+PopupMenu/styles/panel = SubResource("StyleBoxFlat_oo2ox")
+RichTextLabel/constants/outline_size = 7
+TooltipPanel/styles/panel = SubResource("StyleBoxFlat_iiddq")

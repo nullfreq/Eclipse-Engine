@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://u8me3p1xxpfu"]
+
+[ext_resource type="Script" path="res://scenes/gameplay/StrumNote.gd" id="1_x6xmp"]
+
+[node name="StrumNote" type="AnimatedSprite2D"]
+z_as_relative = false
+centered = false
+script = ExtResource("1_x6xmp")

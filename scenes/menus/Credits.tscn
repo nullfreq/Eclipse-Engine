@@ -1,0 +1,158 @@
+[gd_scene load_steps=4 format=3 uid="uid://cbayqc3co2xhe"]
+
+[ext_resource type="Script" path="res://scenes/menus/credits.gd" id="1_1h8fq"]
+[ext_resource type="Texture2D" uid="uid://bkl244pfx60t6" path="res://assets/images/menus/menuBGMagenta.png" id="1_qmgku"]
+[ext_resource type="StyleBox" uid="uid://bfp3rf86xd1rp" path="res://assets/misc/Credits.tres" id="3_r6oqo"]
+
+[node name="Credits" type="Node2D"]
+script = ExtResource("1_1h8fq")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+follow_viewport_enabled = true
+scroll_base_scale = Vector2(-0.9, -0.9)
+scroll_ignore_camera_zoom = true
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="BG" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(0, -32)
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("1_qmgku")
+centered = false
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+position_smoothing_enabled = true
+
+[node name="DescriptionPanel" type="Panel" parent="."]
+z_index = 666
+offset_left = 16.0
+offset_top = 656.0
+offset_right = 1264.0
+offset_bottom = 704.0
+theme_override_styles/panel = ExtResource("3_r6oqo")
+
+[node name="DescriptionLabel" type="Label" parent="DescriptionPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "skibidi
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Credits" type="Panel" parent="."]
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 1264.0
+offset_bottom = 640.0
+theme_override_styles/panel = ExtResource("3_r6oqo")
+
+[node name="EED" type="Label" parent="Credits"]
+self_modulate = Color(1, 0.647059, 0, 1)
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 48.0
+offset_bottom = 38.0
+text = "Eclipse Engine Devs"
+
+[node name="nf" type="Label" parent="Credits/EED"]
+layout_mode = 1
+offset_top = 25.0
+offset_right = 40.0
+offset_bottom = 47.0
+text = "nullfrequency"
+vertical_alignment = 1
+
+[node name="tff" type="Label" parent="Credits/EED"]
+layout_mode = 1
+offset_top = 50.0
+offset_right = 169.0
+offset_bottom = 72.0
+text = "REDACTED"
+vertical_alignment = 1
+
+[node name="FC" type="Label" parent="Credits"]
+self_modulate = Color(1, 0.647059, 0, 1)
+layout_mode = 0
+offset_left = 16.0
+offset_top = 96.0
+offset_right = 297.0
+offset_bottom = 118.0
+text = "Funkin' Crew"
+
+[node name="PA" type="Label" parent="Credits/FC"]
+layout_mode = 1
+offset_top = 25.0
+offset_right = 40.0
+offset_bottom = 47.0
+text = "PhantomArcade"
+vertical_alignment = 1
+
+[node name="nn99" type="Label" parent="Credits/FC"]
+layout_mode = 1
+offset_top = 50.0
+offset_right = 169.0
+offset_bottom = 72.0
+text = "ninjamuffin99"
+vertical_alignment = 1
+
+[node name="KS" type="Label" parent="Credits/FC"]
+layout_mode = 1
+offset_top = 75.0
+offset_right = 183.0
+offset_bottom = 97.0
+text = "Kawaii Sprite"
+vertical_alignment = 1
+
+[node name="es" type="Label" parent="Credits/FC"]
+layout_mode = 1
+offset_top = 100.0
+offset_right = 183.0
+offset_bottom = 122.0
+text = "evilSk8r"
+vertical_alignment = 1
+
+[node name="SO" type="Label" parent="Credits"]
+self_modulate = Color(1, 0.647059, 0, 1)
+layout_mode = 0
+offset_left = 16.0
+offset_top = 224.0
+offset_right = 297.0
+offset_bottom = 246.0
+text = "Shoutouts"
+
+[node name="crowplexus" type="Label" parent="Credits/SO"]
+layout_mode = 1
+offset_top = 25.0
+offset_right = 40.0
+offset_bottom = 47.0
+text = "crowplexus"
+vertical_alignment = 1
+
+[node name="tom fulp" type="Label" parent="Credits/SO"]
+layout_mode = 1
+offset_top = 50.0
+offset_right = 169.0
+offset_bottom = 72.0
+text = "Tom Fulp"
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="Credits"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -32.0
+offset_right = -24.0
+offset_bottom = -10.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Press escape to go back"

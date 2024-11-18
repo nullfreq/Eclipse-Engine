@@ -1,0 +1,498 @@
+[gd_scene load_steps=26 format=3 uid="uid://baaa745xk1bi6"]
+
+[ext_resource type="PackedScene" uid="uid://u8me3p1xxpfu" path="res://scenes/gameplay/StrumNote.tscn" id="1_3s0yq"]
+[ext_resource type="Script" path="res://scenes/gameplay/PlayScene.gd" id="1_vjdb2"]
+[ext_resource type="PackedScene" uid="uid://bmk1biimvuhub" path="res://scenes/gameplay/ComboNumber.tscn" id="3_au5kh"]
+[ext_resource type="SpriteFrames" uid="uid://b61voa1gtp7vk" path="res://assets/images/notes/default.xml" id="6_ymww6"]
+[ext_resource type="Texture2D" uid="uid://s4c1ypv21vvg" path="res://assets/images/gameplay/combo.png" id="7_jq286"]
+[ext_resource type="Texture2D" uid="uid://ct6mp4ctqbcay" path="res://assets/images/gameplay/healthBar.png" id="8_woqau"]
+[ext_resource type="Texture2D" uid="uid://cqqar044hkk7a" path="res://assets/images/gameplay/icons/icon-bf.png" id="9_xit6x"]
+[ext_resource type="Texture2D" uid="uid://cut6bji06nllt" path="res://assets/images/gameplay/countdown/funkin/ready.png" id="10_8qfw1"]
+[ext_resource type="Texture2D" uid="uid://bwcxv1o02lhgw" path="res://assets/images/gameplay/icons/icon-dad.png" id="10_shgo6"]
+[ext_resource type="PackedScene" uid="uid://ctnjwrchp348x" path="res://scenes/gameplay/PauseMenu.tscn" id="13_gssik"]
+[ext_resource type="AudioStream" uid="uid://c80q686fjs5o4" path="res://assets/sounds/gameplay/missnote1.ogg" id="15_wq1wi"]
+[ext_resource type="AudioStream" uid="uid://drmwkv3p1fjxq" path="res://assets/sounds/gameplay/missnote2.ogg" id="16_x7agt"]
+[ext_resource type="AudioStream" uid="uid://c5lm4lu4yd4c5" path="res://assets/sounds/gameplay/missnote3.ogg" id="17_bh41a"]
+[ext_resource type="PackedScene" uid="uid://k23i0spxppyh" path="res://scenes/general/FunnyText.tscn" id="18_ybm01"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tsl7q"]
+bg_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hdseu"]
+bg_color = Color(1, 0.647059, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vhcem"]
+bg_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t46iw"]
+bg_color = Color(0.4, 1, 0.2, 1)
+
+[sub_resource type="Animation" id="Animation_strlw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HUD:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HUD:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HUD/ImportantShit/iconP1:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.9, 0.9)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HUD/ImportantShit/iconP2:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.9, 0.9)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("HUD/CountdownSprite:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("HUD/CountdownSprite:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_wf3g5"]
+resource_name = "cdFade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HUD/CountdownSprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HUD/CountdownSprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 720)]
+}
+
+[sub_resource type="Animation" id="Animation_nq822"]
+resource_name = "hudBump"
+length = 0.500004
+step = 0.0416667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HUD:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(1.02, 1.02), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HUD:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(-12, -12), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_rgdvy"]
+resource_name = "iconBump"
+length = 0.500005
+step = 0.0416667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HUD/ImportantShit/iconP1:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(0.95, 0.95), Vector2(0.9, 0.9)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HUD/ImportantShit/iconP2:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(0.95, 0.95), Vector2(0.9, 0.9)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e3r2b"]
+_data = {
+"RESET": SubResource("Animation_strlw"),
+"cdFade": SubResource("Animation_wf3g5"),
+"hudBump": SubResource("Animation_nq822"),
+"iconBump": SubResource("Animation_rgdvy")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_vfv0h"]
+font_size = 80
+font_color = Color(0, 0, 100, 1)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_uua4s"]
+streams_count = 3
+stream_0/stream = ExtResource("15_wq1wi")
+stream_1/stream = ExtResource("16_x7agt")
+stream_2/stream = ExtResource("17_bh41a")
+
+[node name="PlayScene" type="Node2D"]
+process_mode = 1
+script = ExtResource("1_vjdb2")
+
+[node name="SongScriptLoader" type="Node" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.05, 1.05)
+position_smoothing_enabled = true
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="TimebarBG" type="Sprite2D" parent="HUD"]
+visible = false
+position = Vector2(310, 8)
+texture = ExtResource("8_woqau")
+centered = false
+
+[node name="TimeBar" type="ProgressBar" parent="HUD"]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -325.0
+offset_top = 11.0
+offset_right = 265.0
+offset_bottom = 24.0
+grow_horizontal = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_tsl7q")
+theme_override_styles/fill = SubResource("StyleBoxFlat_hdseu")
+max_value = 1.0
+show_percentage = false
+
+[node name="SongName" type="Label" parent="HUD/TimeBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -63.5
+offset_top = -13.0
+offset_right = 63.5
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Song name"
+vertical_alignment = 1
+
+[node name="OppNote" parent="HUD" instance=ExtResource("1_3s0yq")]
+position = Vector2(0, 24)
+scale = Vector2(0.7, 0.7)
+sprite_frames = ExtResource("6_ymww6")
+animation = &"arrowLEFT"
+frame_progress = 1.0
+
+[node name="OppNote2" parent="HUD" instance=ExtResource("1_3s0yq")]
+position = Vector2(0, 24)
+scale = Vector2(0.7, 0.7)
+sprite_frames = ExtResource("6_ymww6")
+animation = &"arrowDOWN"
+frame_progress = 1.0
+direction = 1
+
+[node name="OppNote3" parent="HUD" instance=ExtResource("1_3s0yq")]
+position = Vector2(0, 24)
+scale = Vector2(0.7, 0.7)
+sprite_frames = ExtResource("6_ymww6")
+animation = &"arrowUP"
+frame_progress = 1.0
+direction = 2
+
+[node name="OppNote4" parent="HUD" instance=ExtResource("1_3s0yq")]
+position = Vector2(0, 24)
+scale = Vector2(0.7, 0.7)
+sprite_frames = ExtResource("6_ymww6")
+animation = &"arrowRIGHT"
+frame_progress = 1.0
+direction = 3
+
+[node name="PlayerNote" parent="HUD" instance=ExtResource("1_3s0yq")]
+position = Vector2(0, 24)
+scale = Vector2(0.7, 0.7)
+sprite_frames = ExtResource("6_ymww6")
+animation = &"arrowLEFT"
+frame_progress = 1.0
+playerNote = 1
+
+[node name="PlayerNote2" parent="HUD" instance=ExtResource("1_3s0yq")]
+position = Vector2(0, 24)
+scale = Vector2(0.7, 0.7)
+sprite_frames = ExtResource("6_ymww6")
+animation = &"arrowDOWN"
+frame_progress = 1.0
+direction = 1
+playerNote = 1
+
+[node name="PlayerNote3" parent="HUD" instance=ExtResource("1_3s0yq")]
+position = Vector2(0, 24)
+scale = Vector2(0.7, 0.7)
+sprite_frames = ExtResource("6_ymww6")
+animation = &"arrowUP"
+frame_progress = 1.0
+direction = 2
+playerNote = 1
+
+[node name="PlayerNote4" parent="HUD" instance=ExtResource("1_3s0yq")]
+position = Vector2(0, 24)
+scale = Vector2(0.7, 0.7)
+sprite_frames = ExtResource("6_ymww6")
+animation = &"arrowRIGHT"
+frame_progress = 1.0
+direction = 3
+playerNote = 1
+
+[node name="ComboAnchor" type="Control" parent="HUD"]
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -176.0
+offset_top = -56.0
+offset_right = -176.0
+offset_bottom = -56.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="ComboNumber" parent="HUD/ComboAnchor" instance=ExtResource("3_au5kh")]
+
+[node name="ComboNumber2" parent="HUD/ComboAnchor" instance=ExtResource("3_au5kh")]
+position = Vector2(65, 0)
+
+[node name="ComboNumber3" parent="HUD/ComboAnchor" instance=ExtResource("3_au5kh")]
+position = Vector2(130, 0)
+
+[node name="Combo" type="Sprite2D" parent="HUD/ComboAnchor"]
+visible = false
+position = Vector2(-36, -120)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("7_jq286")
+centered = false
+
+[node name="ImportantShit" type="Control" parent="HUD"]
+z_index = 665
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -330.0
+offset_top = -72.0
+offset_right = 271.0
+offset_bottom = -53.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(300, 9)
+
+[node name="HealthbarBG" type="Sprite2D" parent="HUD/ImportantShit"]
+texture = ExtResource("8_woqau")
+centered = false
+
+[node name="HealthBar" type="ProgressBar" parent="HUD/ImportantShit"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 3.0
+offset_right = -6.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_vhcem")
+theme_override_styles/fill = SubResource("StyleBoxFlat_t46iw")
+max_value = 1.0
+value = 0.5
+fill_mode = 1
+show_percentage = false
+
+[node name="iconP1" type="Sprite2D" parent="HUD/ImportantShit"]
+position = Vector2(336, -3)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("9_xit6x")
+flip_h = true
+hframes = 2
+
+[node name="iconP2" type="Sprite2D" parent="HUD/ImportantShit"]
+position = Vector2(248, -3)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("10_shgo6")
+hframes = 2
+
+[node name="ScoreTxt" type="Label" parent="HUD/ImportantShit"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 16
+text = "4:20 | Score: 0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="CountdownSprite" type="TextureRect" parent="HUD"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_8qfw1")
+stretch_mode = 3
+
+[node name="Inst" type="AudioStreamPlayer" parent="."]
+bus = &"Inst"
+
+[node name="Voices" type="AudioStreamPlayer" parent="."]
+bus = &"VoicesOpp"
+
+[node name="SongTime" type="Timer" parent="."]
+one_shot = true
+
+[node name="Seconds" type="Timer" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_e3r2b")
+}
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_e3r2b")
+}
+
+[node name="AnimationPlayer3" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_e3r2b")
+}
+
+[node name="PauseMenu" parent="." instance=ExtResource("13_gssik")]
+visible = false
+
+[node name="GameOver" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="DeathBG" type="ColorRect" parent="GameOver"]
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0, 0, 0, 1)
+
+[node name="FunnyText" parent="GameOver" instance=ExtResource("18_ybm01")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "placeholder death screen
+press enter to restart"
+label_settings = SubResource("LabelSettings_vfv0h")
+
+[node name="MissSFX" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_uua4s")
+volume_db = -12.041
+bus = &"SFX"
+
+[node name="CountdownSFX" type="AudioStreamPlayer" parent="."]
+volume_db = -3.098
+bus = &"SFX"
+
+[node name="CountdownTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="DadSing" type="Timer" parent="."]
+wait_time = 6.1
+one_shot = true
+
+[node name="BfSing" type="Timer" parent="."]
+wait_time = 6.1
+
+[connection signal="value_changed" from="HUD/ImportantShit/HealthBar" to="." method="_on_health_bar_value_changed"]
+[connection signal="timeout" from="SongTime" to="." method="_on_song_time_timeout"]
+[connection signal="timeout" from="Seconds" to="." method="_on_seconds_timeout"]
+[connection signal="timeout" from="CountdownTimer" to="." method="_on_countdown_timer_timeout"]

@@ -1,0 +1,42 @@
+{
+	"animations": {
+		"idle": {
+			"offsetX": 0,
+			"offsetY": 0,
+			"source": "SONICmoveIDLE"
+		},
+		"laugh": {
+			"offsetX": 30,
+			"offsetY": 12,
+			"source": "SONIClaugh"
+		},
+		"singDOWN": {
+			"offsetX": -34,
+			"offsetY": 12,
+			"source": "SONICmoveDOWN"
+		},
+		"singLEFT": {
+			"offsetX": -20,
+			"offsetY": 4,
+			"source": "SONICmoveLEFT"
+		},
+		"singRIGHT": {
+			"offsetX": 28,
+			"offsetY": -12,
+			"source": "SONICmoveRIGHT"
+		},
+		"singUP": {
+			"offsetX": 50,
+			"offsetY": -14,
+			"source": "SONICmoveUP"
+		},
+		"yapMaster": {
+			"offsetX": 66,
+			"offsetY": 4,
+			"source": "sonicImmagetya"
+		}
+	},
+	"flipX": false,
+	"isPlayer": false,
+	"spritesheet": "Sonic_EXE_Assets"
+}

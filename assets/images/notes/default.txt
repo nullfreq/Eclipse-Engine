@@ -1,0 +1,12 @@
+arrowLEFT
+left press
+left confirm
+arrowDOWN
+down press
+down confirm
+arrowUP
+up press
+up confirm
+arrowRIGHT
+right press
+right confirm

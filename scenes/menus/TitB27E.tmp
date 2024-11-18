@@ -1,0 +1,73 @@
+[gd_scene load_steps=7 format=3 uid="uid://chw0ecy7nlh1g"]
+
+[ext_resource type="Script" path="res://scenes/menus/TitleScene.gd" id="1_ly821"]
+[ext_resource type="Script" path="res://scenes/general/alphabet.gd" id="2_1lck3"]
+[ext_resource type="SpriteFrames" uid="uid://uba0610kwmcm" path="res://assets/images/menus/title/logoBumpin.xml" id="2_omh8d"]
+[ext_resource type="SpriteFrames" uid="uid://bab6s65geuio5" path="res://assets/misc/gfFrames.tres" id="3_2ilpt"]
+[ext_resource type="SpriteFrames" uid="uid://cwsikfputopw8" path="res://assets/images/menus/title/titleEnter.xml" id="4_crt4c"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_cs2qx"]
+blend_mode = 3
+
+[node name="TitleScene" type="Node2D"]
+script = ExtResource("1_ly821")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0, 0, 0, 1)
+
+[node name="Logo" type="AnimatedSprite2D" parent="."]
+position = Vector2(336, 240)
+sprite_frames = ExtResource("2_omh8d")
+animation = &"logo bumpin"
+
+[node name="GF" type="AnimatedSprite2D" parent="."]
+position = Vector2(912, 384)
+sprite_frames = ExtResource("3_2ilpt")
+animation = &"danceLeft"
+frame = 14
+frame_progress = 1.0
+
+[node name="PressEnter" type="AnimatedSprite2D" parent="."]
+position = Vector2(112, 608)
+sprite_frames = ExtResource("4_crt4c")
+animation = &"Press Enter to Begin"
+centered = false
+
+[node name="Intro" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="Intro"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="FunnyText" type="Control" parent="Intro"]
+visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -0.0369873
+offset_top = -0.0209961
+offset_right = -0.0369873
+offset_bottom = -0.0209961
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("2_1lck3")
+horizontal_alignment = 1
+vertical_alignment = 1
+origin = Vector2(640, 360)
+
+[node name="AwesomeRect" type="ColorRect" parent="."]
+material = SubResource("CanvasItemMaterial_cs2qx")
+offset_right = 1280.0
+offset_bottom = 720.0

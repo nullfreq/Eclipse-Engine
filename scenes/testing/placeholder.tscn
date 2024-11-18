@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://l1ubetkonuhl"]
+
+[ext_resource type="VideoStream" path="res://assets/videos/mohamed.mp4" id="1_d8uym"]
+[ext_resource type="Script" path="res://scenes/testing/placeholder.gd" id="1_ontbr"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_ontbr")
+
+[node name="Yep" type="VideoStreamPlayer" parent="."]
+offset_right = 1280.0
+offset_bottom = 720.0
+stream = ExtResource("1_d8uym")
+autoplay = true
+expand = true
+
+[connection signal="finished" from="Yep" to="." method="_on_yep_finished"]

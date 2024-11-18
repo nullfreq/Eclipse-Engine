@@ -1,0 +1,58 @@
+[gd_scene load_steps=4 format=3 uid="uid://baaa745xk1bi6"]
+
+[ext_resource type="PackedScene" uid="uid://u8me3p1xxpfu" path="res://scenes/gameplay/StrumNote.tscn" id="1_3s0yq"]
+[ext_resource type="Script" path="res://scenes/gameplay/PlayScene.gd" id="1_vjdb2"]
+[ext_resource type="PackedScene" uid="uid://bmk1biimvuhub" path="res://scenes/gameplay/ComboNumber.tscn" id="3_au5kh"]
+
+[node name="PlayScene" type="Node2D"]
+script = ExtResource("1_vjdb2")
+
+[node name="SongScriptLoader" type="Node" parent="."]
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="OppNote" parent="HUD" instance=ExtResource("1_3s0yq")]
+position = Vector2(0, 24)
+
+[node name="OppNote2" parent="HUD" instance=ExtResource("1_3s0yq")]
+position = Vector2(0, 24)
+direction = 1
+
+[node name="OppNote3" parent="HUD" instance=ExtResource("1_3s0yq")]
+position = Vector2(0, 24)
+direction = 2
+
+[node name="OppNote4" parent="HUD" instance=ExtResource("1_3s0yq")]
+position = Vector2(0, 24)
+direction = 3
+
+[node name="PlayerNote" parent="HUD" instance=ExtResource("1_3s0yq")]
+position = Vector2(0, 24)
+playerNote = 1
+
+[node name="PlayerNote2" parent="HUD" instance=ExtResource("1_3s0yq")]
+position = Vector2(0, 24)
+direction = 1
+playerNote = 1
+
+[node name="PlayerNote3" parent="HUD" instance=ExtResource("1_3s0yq")]
+position = Vector2(0, 24)
+direction = 2
+playerNote = 1
+
+[node name="PlayerNote4" parent="HUD" instance=ExtResource("1_3s0yq")]
+position = Vector2(0, 24)
+direction = 3
+playerNote = 1
+
+[node name="ComboNumber" parent="HUD" instance=ExtResource("3_au5kh")]
+visible = false
+position = Vector2(1104, 664)
+
+[node name="ComboNumber2" parent="HUD" instance=ExtResource("3_au5kh")]
+visible = false
+position = Vector2(1169, 664)
+
+[node name="ComboNumber3" parent="HUD" instance=ExtResource("3_au5kh")]
+visible = false
+position = Vector2(1234, 664)

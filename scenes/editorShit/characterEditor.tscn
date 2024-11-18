@@ -1,0 +1,475 @@
+[gd_scene load_steps=15 format=3 uid="uid://bpg4bb0ivhdqh"]
+
+[ext_resource type="Script" path="res://scenes/editorShit/characterEditor.gd" id="1_2e62q"]
+[ext_resource type="Script" path="res://scenes/gameplay/Character.gd" id="2_07wl4"]
+[ext_resource type="SpriteFrames" uid="uid://cxaqoveqijn3n" path="res://assets/images/characters/BOYFRIEND.xml" id="2_eskvg"]
+[ext_resource type="Shader" path="res://assets/shaders/blur.gdshader" id="4_7iy5n"]
+[ext_resource type="Script" path="res://scenes/editorShit/characterEditor/newCharWindow.gd" id="5_b0lok"]
+[ext_resource type="Script" path="res://scenes/editorShit/characterEditor/addAnimWindow.gd" id="6_38rcu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ti7xj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fyd4v"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sbhc0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6ngdj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c1xpd"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bswox"]
+shader = ExtResource("4_7iy5n")
+shader_parameter/lod = 2.4
+shader_parameter/mix_percentage = 0.0
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_kj42t"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5pevl"]
+bg_color = Color(1, 0.647059, 0, 1)
+
+[node name="CharacterEditor" type="Node2D"]
+script = ExtResource("1_2e62q")
+
+[node name="Ghost" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.5)
+position = Vector2(640, 360)
+sprite_frames = ExtResource("2_eskvg")
+animation = &"BF idle dance"
+centered = false
+offset = Vector2(5, 0)
+flip_h = true
+script = ExtResource("2_07wl4")
+
+[node name="Character" type="AnimatedSprite2D" parent="."]
+position = Vector2(640, 360)
+sprite_frames = ExtResource("2_eskvg")
+animation = &"BF idle dance"
+centered = false
+offset = Vector2(5, 0)
+flip_h = true
+script = ExtResource("2_07wl4")
+
+[node name="Camera2D" type="Camera2D" parent="Character"]
+offset = Vector2(280, 180)
+ignore_rotation = false
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+self_modulate = Color(1, 1, 1, 0.8)
+offset_left = 1040.0
+offset_top = 16.0
+offset_right = 1264.0
+offset_bottom = 240.0
+focus_mode = 1
+
+[node name="CharacterList" type="ItemList" parent="CanvasLayer"]
+self_modulate = Color(1, 1, 1, 0.8)
+z_index = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -224.0
+offset_top = 32.0
+offset_right = -32.0
+offset_bottom = 192.0
+grow_horizontal = 0
+focus_mode = 1
+
+[node name="Load" type="Button" parent="CanvasLayer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 1072.0
+offset_top = -515.0
+offset_right = 1120.0
+offset_bottom = -492.0
+grow_vertical = 0
+focus_mode = 1
+text = "Load"
+
+[node name="Save" type="Button" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 488.0
+offset_top = -515.0
+offset_right = 536.0
+offset_bottom = -492.0
+grow_horizontal = 2
+grow_vertical = 0
+focus_mode = 1
+text = "Save"
+
+[node name="New" type="Button" parent="CanvasLayer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -96.0
+offset_top = -515.0
+offset_right = -48.0
+offset_bottom = -492.0
+grow_horizontal = 0
+grow_vertical = 0
+focus_mode = 1
+text = "New"
+
+[node name="Instructions" type="Label" parent="CanvasLayer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -144.0
+offset_right = 624.0
+offset_bottom = -16.0
+grow_vertical = 0
+focus_mode = 1
+text = "Press space to play animation
+Arrow keys to change offset
+Use Mouse to move camera
+\"[\" & \"]\" to zoom in and out
+\"\\\" to reset camera position and zoom"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Instructions"]
+self_modulate = Color(1, 1, 1, 0.8)
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 1
+
+[node name="DataPanel" type="Panel" parent="CanvasLayer"]
+self_modulate = Color(1, 1, 1, 0.8)
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -240.0
+offset_top = 256.0
+offset_right = -16.0
+offset_bottom = 704.0
+grow_horizontal = 0
+focus_mode = 1
+
+[node name="animList" type="ItemList" parent="CanvasLayer/DataPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -96.0
+offset_top = 16.0
+offset_right = 96.0
+offset_bottom = 304.0
+grow_horizontal = 2
+focus_mode = 1
+
+[node name="AddAnim" type="Button" parent="CanvasLayer/DataPanel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -120.0
+offset_right = 4.0
+offset_bottom = -112.0
+grow_horizontal = 2
+grow_vertical = 0
+focus_mode = 1
+text = "Add Animation"
+
+[node name="Offset" type="Label" parent="CanvasLayer/DataPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -80.0
+offset_top = 352.0
+offset_right = 80.0
+offset_bottom = 374.0
+grow_horizontal = 2
+focus_mode = 1
+theme_override_font_sizes/font_size = 16
+text = "Offset: (XXX,YYY)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Source" type="Label" parent="CanvasLayer/DataPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -80.0
+offset_top = 384.0
+offset_right = 80.0
+offset_bottom = 406.0
+grow_horizontal = 2
+focus_mode = 1
+theme_override_font_sizes/font_size = 16
+text = "Source: \"idle\""
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ViewJSON" type="Button" parent="CanvasLayer/DataPanel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -48.0
+offset_top = -36.0
+offset_right = 48.0
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 0
+focus_mode = 1
+text = "View JSON"
+
+[node name="Window" type="Window" parent="CanvasLayer"]
+transparent_bg = true
+title = "Character JSON"
+position = Vector2i(8, 37)
+size = Vector2i(480, 672)
+visible = false
+transparent = true
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Window"]
+self_modulate = Color(1, 1, 1, 0.8)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CodeEdit" type="CodeEdit" parent="CanvasLayer/Window"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/background_color = Color(0, 0, 0, 0)
+theme_override_colors/font_readonly_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ti7xj")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_fyd4v")
+theme_override_styles/read_only = SubResource("StyleBoxEmpty_sbhc0")
+theme_override_styles/completion = SubResource("StyleBoxEmpty_6ngdj")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_c1xpd")
+editable = false
+symbol_lookup_on_click = true
+indent_automatic = true
+
+[node name="BlurBG" type="TextureRect" parent="CanvasLayer"]
+visible = false
+z_index = 666
+material = SubResource("ShaderMaterial_bswox")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("ViewportTexture_kj42t")
+
+[node name="NewCharWindow" type="Window" parent="CanvasLayer"]
+transparent_bg = true
+title = "Add New Character"
+initial_position = 1
+size = Vector2i(640, 360)
+visible = false
+transient = true
+exclusive = true
+transparent = true
+script = ExtResource("5_b0lok")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/NewCharWindow"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.647059, 0, 1)
+
+[node name="BoxContainer" type="BoxContainer" parent="CanvasLayer/NewCharWindow"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -91.0
+offset_top = -30.5
+offset_right = 91.0
+offset_bottom = 30.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+vertical = true
+
+[node name="JsonName" type="Label" parent="CanvasLayer/NewCharWindow/BoxContainer"]
+layout_mode = 2
+tooltip_text = "Name of the JSON file
+EX: \"bf.json\""
+theme_override_font_sizes/font_size = 16
+text = "JSON Name:"
+
+[node name="JsonInput" type="LineEdit" parent="CanvasLayer/NewCharWindow/BoxContainer"]
+custom_minimum_size = Vector2(182, 0)
+layout_mode = 2
+
+[node name="Spritesheet" type="Label" parent="CanvasLayer/NewCharWindow/BoxContainer"]
+layout_mode = 2
+tooltip_text = "Name of the .xml being used, found in the \"assets/images/characters\" folder
+EX: \"DADDY_DEAREST\""
+theme_override_font_sizes/font_size = 16
+text = "Spritesheet:"
+
+[node name="SsInput" type="LineEdit" parent="CanvasLayer/NewCharWindow/BoxContainer"]
+custom_minimum_size = Vector2(182, 0)
+layout_mode = 2
+
+[node name="FlipX" type="Label" parent="CanvasLayer/NewCharWindow/BoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Flip X?"
+
+[node name="XCheck" type="CheckButton" parent="CanvasLayer/NewCharWindow/BoxContainer/FlipX"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -91.0
+offset_top = -12.0
+offset_right = 91.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="IsPlayer" type="Label" parent="CanvasLayer/NewCharWindow/BoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Is Player?"
+
+[node name="PlayerCheck" type="CheckButton" parent="CanvasLayer/NewCharWindow/BoxContainer/IsPlayer"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -91.0
+offset_top = -12.0
+offset_right = 91.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Idle" type="Label" parent="CanvasLayer/NewCharWindow/BoxContainer"]
+layout_mode = 2
+tooltip_text = "Idle animation required for the character editor to not crash. Refer to your characters .xml!
+EX: \"BF idle dance\""
+theme_override_font_sizes/font_size = 16
+text = "Idle animation:"
+
+[node name="IdleInput" type="LineEdit" parent="CanvasLayer/NewCharWindow/BoxContainer"]
+custom_minimum_size = Vector2(182, 0)
+layout_mode = 2
+
+[node name="CreateChar" type="Button" parent="CanvasLayer/NewCharWindow/BoxContainer"]
+layout_mode = 2
+text = "Create Character"
+
+[node name="AddAnimWindow" type="Window" parent="CanvasLayer"]
+title = "Add Animation"
+initial_position = 1
+size = Vector2i(640, 360)
+visible = false
+script = ExtResource("6_38rcu")
+
+[node name="Panel" type="Panel" parent="CanvasLayer/AddAnimWindow"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5pevl")
+
+[node name="BoxContainer" type="BoxContainer" parent="CanvasLayer/AddAnimWindow"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -95.0
+offset_top = -20.0
+offset_right = 95.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+vertical = true
+
+[node name="AnimName" type="Label" parent="CanvasLayer/AddAnimWindow/BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 16
+text = "Animation name:"
+
+[node name="AnimInput" type="LineEdit" parent="CanvasLayer/AddAnimWindow/BoxContainer"]
+custom_minimum_size = Vector2(182, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 6
+
+[node name="AnimSource" type="Label" parent="CanvasLayer/AddAnimWindow/BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 16
+text = "Animation source:"
+
+[node name="AnimSourceInput" type="LineEdit" parent="CanvasLayer/AddAnimWindow/BoxContainer"]
+custom_minimum_size = Vector2(182, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 6
+
+[node name="AddAnimButton" type="Button" parent="CanvasLayer/AddAnimWindow/BoxContainer"]
+layout_mode = 2
+text = "Add Animation"
+
+[connection signal="item_selected" from="CanvasLayer/CharacterList" to="." method="_on_character_list_item_selected"]
+[connection signal="mouse_entered" from="CanvasLayer/CharacterList" to="." method="_on_character_list_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/CharacterList" to="." method="_on_character_list_mouse_exited"]
+[connection signal="pressed" from="CanvasLayer/Load" to="." method="_on_load_pressed"]
+[connection signal="pressed" from="CanvasLayer/Save" to="." method="_on_save_pressed"]
+[connection signal="pressed" from="CanvasLayer/New" to="." method="_on_new_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/DataPanel" to="." method="_on_data_panel_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/DataPanel" to="." method="_on_data_panel_mouse_exited"]
+[connection signal="item_selected" from="CanvasLayer/DataPanel/animList" to="." method="_on_anim_list_item_selected"]
+[connection signal="mouse_entered" from="CanvasLayer/DataPanel/animList" to="." method="_on_anim_list_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/DataPanel/animList" to="." method="_on_anim_list_mouse_exited"]
+[connection signal="pressed" from="CanvasLayer/DataPanel/AddAnim" to="." method="_on_add_anim_pressed"]
+[connection signal="pressed" from="CanvasLayer/DataPanel/ViewJSON" to="." method="_on_view_json_pressed"]
+[connection signal="close_requested" from="CanvasLayer/Window" to="." method="_on_window_close_requested"]
+[connection signal="mouse_entered" from="CanvasLayer/Window/CodeEdit" to="." method="_on_code_edit_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/Window/CodeEdit" to="." method="_on_code_edit_mouse_exited"]
+[connection signal="close_requested" from="CanvasLayer/NewCharWindow" to="." method="_on_new_char_window_close_requested"]
+[connection signal="visibility_changed" from="CanvasLayer/NewCharWindow" to="." method="_on_new_char_window_visibility_changed"]
+[connection signal="text_submitted" from="CanvasLayer/NewCharWindow/BoxContainer/JsonInput" to="CanvasLayer/NewCharWindow" method="_on_json_input_text_submitted"]
+[connection signal="text_submitted" from="CanvasLayer/NewCharWindow/BoxContainer/SsInput" to="CanvasLayer/NewCharWindow" method="_on_ss_input_text_submitted"]
+[connection signal="toggled" from="CanvasLayer/NewCharWindow/BoxContainer/FlipX/XCheck" to="CanvasLayer/NewCharWindow" method="_on_x_check_toggled"]
+[connection signal="toggled" from="CanvasLayer/NewCharWindow/BoxContainer/IsPlayer/PlayerCheck" to="CanvasLayer/NewCharWindow" method="_on_player_check_toggled"]
+[connection signal="text_submitted" from="CanvasLayer/NewCharWindow/BoxContainer/IdleInput" to="CanvasLayer/NewCharWindow" method="_on_idle_input_text_submitted"]
+[connection signal="pressed" from="CanvasLayer/NewCharWindow/BoxContainer/CreateChar" to="." method="_on_create_char_pressed"]
+[connection signal="pressed" from="CanvasLayer/NewCharWindow/BoxContainer/CreateChar" to="CanvasLayer/NewCharWindow" method="_on_create_char_pressed"]
+[connection signal="close_requested" from="CanvasLayer/AddAnimWindow" to="." method="_on_add_anim_window_close_requested"]

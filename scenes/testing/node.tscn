@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://dkmyeserb03lr"]
+
+[ext_resource type="Script" path="res://scenes/gameplay/Character.gd" id="1_3s1wg"]
+[ext_resource type="SpriteFrames" uid="uid://bj4qdrge1gmhg" path="res://assets/images/characters/BOYFRIEND.xml" id="1_5146o"]
+[ext_resource type="Script" path="res://scenes/testing/node.gd" id="1_iutti"]
+[ext_resource type="Texture2D" uid="uid://bqaqehfoshqjb" path="res://assets/images/editors/chart/events/Change BPM.png" id="4_4rcgo"]
+
+[node name="Node" type="Node2D"]
+script = ExtResource("1_iutti")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
+sprite_frames = ExtResource("1_5146o")
+animation = &"BF idle dance"
+flip_h = true
+script = ExtResource("1_3s1wg")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.9, 0.9)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("4_4rcgo")
+
+[connection signal="gui_input" from="TextureRect" to="." method="_on_texture_rect_gui_input"]

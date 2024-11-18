@@ -1,0 +1,104 @@
+[gd_scene load_steps=13 format=3 uid="uid://bmk1biimvuhub"]
+
+[ext_resource type="Texture2D" uid="uid://bvtibmdkj4lgo" path="res://assets/images/gameplay/num0.png" id="1_gqohw"]
+[ext_resource type="Texture2D" uid="uid://bu3d5gsb4c53q" path="res://assets/images/gameplay/num1.png" id="2_xlinu"]
+[ext_resource type="Texture2D" uid="uid://t36s50y0tj4n" path="res://assets/images/gameplay/num2.png" id="3_1fgfo"]
+[ext_resource type="Texture2D" uid="uid://cckveyl6p82h8" path="res://assets/images/gameplay/num3.png" id="4_h74ww"]
+[ext_resource type="Texture2D" uid="uid://cxtpqyl7cbi6h" path="res://assets/images/gameplay/num4.png" id="5_8lr54"]
+[ext_resource type="Texture2D" uid="uid://d0rjua2aq6yyx" path="res://assets/images/gameplay/num5.png" id="6_dvurp"]
+[ext_resource type="Texture2D" uid="uid://be2vuweeqmmw1" path="res://assets/images/gameplay/num6.png" id="7_qtxta"]
+[ext_resource type="Texture2D" uid="uid://b30ch621k3mol" path="res://assets/images/gameplay/num7.png" id="8_68py1"]
+[ext_resource type="Texture2D" uid="uid://blyup3xvoah50" path="res://assets/images/gameplay/num8.png" id="9_8a4ix"]
+[ext_resource type="Texture2D" uid="uid://dtw5ltrm4o27o" path="res://assets/images/gameplay/num9.png" id="10_md7y1"]
+[ext_resource type="Script" path="res://scenes/gameplay/ComboNumber.gd" id="11_ax5de"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hukid"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_gqohw")
+}],
+"loop": false,
+"name": &"0",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_xlinu")
+}],
+"loop": false,
+"name": &"1",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_1fgfo")
+}],
+"loop": false,
+"name": &"2",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_h74ww")
+}],
+"loop": false,
+"name": &"3",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_8lr54")
+}],
+"loop": false,
+"name": &"4",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_dvurp")
+}],
+"loop": false,
+"name": &"5",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_qtxta")
+}],
+"loop": false,
+"name": &"6",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_68py1")
+}],
+"loop": false,
+"name": &"7",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_8a4ix")
+}],
+"loop": false,
+"name": &"8",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_md7y1")
+}],
+"loop": false,
+"name": &"9",
+"speed": 0.0
+}]
+
+[node name="ComboNumber" type="AnimatedSprite2D"]
+z_index = 120
+z_as_relative = false
+scale = Vector2(0.6, 0.6)
+sprite_frames = SubResource("SpriteFrames_hukid")
+animation = &"0"
+script = ExtResource("11_ax5de")

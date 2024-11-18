@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=3 uid="uid://ctnjwrchp348x"]
+
+[ext_resource type="Script" path="res://scenes/gameplay/PauseMenu.gd" id="1_jd200"]
+[ext_resource type="PackedScene" uid="uid://k23i0spxppyh" path="res://scenes/general/FunnyText.tscn" id="1_w1lf4"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_1gigh"]
+blend_mode = 2
+
+[sub_resource type="LabelSettings" id="LabelSettings_yptko"]
+font_size = 60
+
+[node name="PauseMenu" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_jd200")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("CanvasItemMaterial_1gigh")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.636691, 0.41367, 1)
+
+[node name="SongName" parent="." instance=ExtResource("1_w1lf4")]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -479.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = 96.0
+grow_horizontal = 0
+text = "Song Name"
+horizontal_alignment = 2
+
+[node name="Difficulty" parent="." instance=ExtResource("1_w1lf4")]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -380.0
+offset_top = 80.0
+offset_right = -16.0
+offset_bottom = 160.0
+grow_horizontal = 0
+text = "Difficulty"
+label_settings = SubResource("LabelSettings_yptko")
+horizontal_alignment = 2
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]

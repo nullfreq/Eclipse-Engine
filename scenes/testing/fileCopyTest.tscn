@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://brcoekxr04fv0"]
+
+[ext_resource type="Script" path="res://scenes/testing/file_copy_test.gd" id="1_03sdh"]
+
+[node name="FileCopyTest" type="Node2D"]
+script = ExtResource("1_03sdh")
+
+[node name="FileDialog" type="FileDialog" parent="."]
+mode = 3
+title = "Open a File"
+initial_position = 1
+size = Vector2i(640, 480)
+visible = true
+ok_button_text = "Open"
+dialog_close_on_escape = false
+file_mode = 0
+access = 2
+filters = PackedStringArray("*.ogg")
+
+[connection signal="file_selected" from="FileDialog" to="." method="_on_file_dialog_file_selected"]

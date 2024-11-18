@@ -1,0 +1,18 @@
+{
+	"tutorial": {
+		"songs": ["tutorial"],
+		"color": "ff0000",
+		"icon": "gf"
+	},
+	"week1": {
+		"songs": ["bopeebo","fresh","dadbattle"],
+		"color": "8a2be2",
+		"icon": "dad"
+		
+	},
+	"xtra": {
+		"songs": ["freaky fred"],
+		"color": "f4a460",
+		"icon": "bf-old"
+	}
+}

@@ -1,0 +1,98 @@
+[gd_scene load_steps=12 format=3 uid="uid://151kugyxo0yj"]
+
+[ext_resource type="Texture2D" uid="uid://cac8067eiwluh" path="res://assets/images/editors/chart/left.png" id="1_6fkf8"]
+[ext_resource type="Script" path="res://scenes/menus/Warning.gd" id="1_uggvn"]
+[ext_resource type="Texture2D" uid="uid://bqshoq10234ic" path="res://assets/images/editors/chart/down.png" id="2_qddmi"]
+[ext_resource type="Texture2D" uid="uid://t6uqv2nbko57" path="res://assets/images/editors/chart/up.png" id="3_ygrmy"]
+[ext_resource type="Texture2D" uid="uid://nkbkfc7mw7mt" path="res://assets/images/editors/chart/right.png" id="4_g3ckb"]
+[ext_resource type="Shader" path="res://assets/shaders/blur.gdshader" id="5_8tymv"]
+[ext_resource type="SpriteFrames" uid="uid://cxaqoveqijn3n" path="res://assets/images/characters/BOYFRIEND.xml" id="6_kvgi5"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_5njss"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_8xywp"]
+blend_mode = 1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bly1e"]
+shader = ExtResource("5_8tymv")
+shader_parameter/lod = 1.0
+shader_parameter/mix_percentage = 0.3
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_kkxu4"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_uggvn")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0, 0, 0, 1)
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+modulate = Color(1, 1, 1, 0.4)
+repeat_size = Vector2(80, 80)
+autoscroll = Vector2(40, 40)
+repeat_times = 48
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
+material = SubResource("CanvasItemMaterial_5njss")
+texture = ExtResource("1_6fkf8")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Parallax2D"]
+material = SubResource("CanvasItemMaterial_5njss")
+position = Vector2(40, 0)
+texture = ExtResource("2_qddmi")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Parallax2D"]
+material = SubResource("CanvasItemMaterial_5njss")
+position = Vector2(0, 40)
+texture = ExtResource("3_ygrmy")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Parallax2D"]
+material = SubResource("CanvasItemMaterial_5njss")
+position = Vector2(40, 40)
+texture = ExtResource("4_g3ckb")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
+material = SubResource("CanvasItemMaterial_8xywp")
+position = Vector2(640, 360)
+sprite_frames = ExtResource("6_kvgi5")
+animation = &"BF HEY!!"
+frame = 25
+frame_progress = 1.0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_bly1e")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1280.0
+offset_bottom = 720.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_kkxu4")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="WarningText" type="RichTextLabel" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -640.0
+offset_top = -56.0
+offset_right = 640.0
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "[center][color=yellow]WARNING!!![/color]
+This is a HEAVILY work in progress engine, so expect a lot of things to go wrong!
+[color=orange]btw there's flashing lights[/color]
+Press enter to continue.[/center]"
+
+[connection signal="gui_input" from="CanvasLayer/WarningText" to="." method="_on_warning_text_gui_input"]

@@ -1,0 +1,32 @@
+{
+	"animations": {
+		"idle": {
+			"offsetX": 0,
+			"offsetY": 0,
+			"source": "idle"
+		},
+		"singDOWN": {
+			"offsetX": 0,
+			"offsetY": 30,
+			"source": "singDOWN"
+		},
+		"singLEFT": {
+			"offsetX": 10,
+			"offsetY": -10,
+			"source": "singLEFT"
+		},
+		"singRIGHT": {
+			"offsetX": 0,
+			"offsetY": -27,
+			"source": "singRIGHT"
+		},
+		"singUP": {
+			"offsetX": 6,
+			"offsetY": -50,
+			"source": "singUP"
+		}
+	},
+	"flipX": false,
+	"isPlayer": false,
+	"spritesheet": "daddyDearest"
+}

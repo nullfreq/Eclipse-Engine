@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://dj1m1x02ugs8c"]
+
+[ext_resource type="SpriteFrames" uid="uid://b61voa1gtp7vk" path="res://assets/images/notes/default.xml" id="1_upejk"]
+[ext_resource type="Script" path="res://scenes/gameplay/note.gd" id="1_uurbj"]
+
+[node name="Note" type="AnimatedSprite2D"]
+top_level = true
+z_index = 20
+z_as_relative = false
+sprite_frames = ExtResource("1_upejk")
+animation = &"arrowDOWN"
+centered = false
+script = ExtResource("1_uurbj")
+
+[node name="End" type="AnimatedSprite2D" parent="."]
+show_behind_parent = true
+sprite_frames = ExtResource("1_upejk")
+animation = &"arrowDOWN"
+centered = false
+
+[node name="SusChecker" type="VisibleOnScreenNotifier2D" parent="End"]
+rect = Rect2(0, 0, 160, 160)
+
+[node name="Hold" type="AnimatedSprite2D" parent="."]
+show_behind_parent = true
+texture_repeat = 2
+sprite_frames = ExtResource("1_upejk")
+animation = &"arrowDOWN"
+centered = false

@@ -1,0 +1,225 @@
+[gd_scene load_steps=8 format=3 uid="uid://bpg4bb0ivhdqh"]
+
+[ext_resource type="Script" path="res://scenes/editorShit/characterEditor.gd" id="1_2e62q"]
+[ext_resource type="Script" path="res://scenes/gameplay/Character.gd" id="2_07wl4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ti7xj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fyd4v"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sbhc0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6ngdj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c1xpd"]
+
+[node name="CharacterEditor" type="Node2D"]
+script = ExtResource("1_2e62q")
+
+[node name="Ghost" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.5)
+position = Vector2(640, 360)
+script = ExtResource("2_07wl4")
+
+[node name="Character" type="AnimatedSprite2D" parent="."]
+position = Vector2(640, 360)
+script = ExtResource("2_07wl4")
+
+[node name="Camera2D" type="Camera2D" parent="Character"]
+ignore_rotation = false
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="CharacterList" type="ItemList" parent="CanvasLayer"]
+self_modulate = Color(1, 1, 1, 0.8)
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -240.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = 240.0
+grow_horizontal = 0
+auto_height = true
+
+[node name="Load" type="Button" parent="CanvasLayer/CharacterList"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -32.0
+offset_right = 64.0
+offset_bottom = -9.0
+grow_vertical = 0
+text = "Load"
+
+[node name="Save" type="Button" parent="CanvasLayer/CharacterList"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 64.0
+offset_top = -32.0
+offset_right = 112.0
+offset_bottom = -9.0
+grow_vertical = 0
+text = "Save"
+
+[node name="ViewJSON" type="Button" parent="CanvasLayer/CharacterList"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -112.0
+offset_top = -32.0
+offset_right = -16.0
+offset_bottom = -9.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "View JSON"
+
+[node name="Instructions" type="Label" parent="CanvasLayer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -144.0
+offset_right = 624.0
+offset_bottom = -16.0
+grow_vertical = 0
+text = "Press space to play animation
+Arrow keys to change offset
+Use Mouse to move camera
+\"[\" & \"]\" to zoom in and out
+\"\\\" to reset camera position and zoom"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Instructions"]
+self_modulate = Color(1, 1, 1, 0.8)
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DataPanel" type="Panel" parent="CanvasLayer"]
+self_modulate = Color(1, 1, 1, 0.8)
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -240.0
+offset_top = 256.0
+offset_right = -16.0
+offset_bottom = 704.0
+grow_horizontal = 0
+
+[node name="currentAnimation" type="SpinBox" parent="CanvasLayer/DataPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -96.0
+offset_top = 16.0
+offset_right = 112.0
+offset_bottom = 39.0
+grow_horizontal = 2
+alignment = 1
+update_on_text_changed = true
+prefix = "Animation:"
+
+[node name="Offset" type="Label" parent="CanvasLayer/DataPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -28.5
+offset_top = 64.0
+offset_right = 28.5
+offset_bottom = 86.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 16
+text = "Offset: (XXX,YYY)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Animation" type="Label" parent="CanvasLayer/DataPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -80.0
+offset_top = 96.0
+offset_right = 80.0
+offset_bottom = 118.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 16
+text = "Animation"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Source" type="Label" parent="CanvasLayer/DataPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -80.0
+offset_top = 128.0
+offset_right = 80.0
+offset_bottom = 150.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 16
+text = "Source: \"idle\""
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Window" type="Window" parent="CanvasLayer"]
+transparent_bg = true
+title = "Character JSON"
+position = Vector2i(0, 36)
+size = Vector2i(480, 720)
+visible = false
+transparent = true
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Window"]
+self_modulate = Color(1, 1, 1, 0.8)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CodeEdit" type="CodeEdit" parent="CanvasLayer/Window"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/background_color = Color(0, 0, 0, 0)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ti7xj")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_fyd4v")
+theme_override_styles/read_only = SubResource("StyleBoxEmpty_sbhc0")
+theme_override_styles/completion = SubResource("StyleBoxEmpty_6ngdj")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_c1xpd")
+symbol_lookup_on_click = true
+indent_automatic = true
+
+[connection signal="item_clicked" from="CanvasLayer/CharacterList" to="." method="_on_character_list_item_clicked"]
+[connection signal="mouse_entered" from="CanvasLayer/CharacterList" to="." method="_on_character_list_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/CharacterList" to="." method="_on_character_list_mouse_exited"]
+[connection signal="pressed" from="CanvasLayer/CharacterList/Load" to="." method="_on_load_pressed"]
+[connection signal="pressed" from="CanvasLayer/CharacterList/Save" to="." method="_on_save_pressed"]
+[connection signal="pressed" from="CanvasLayer/CharacterList/ViewJSON" to="." method="_on_view_json_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/DataPanel" to="." method="_on_data_panel_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/DataPanel" to="." method="_on_data_panel_mouse_exited"]
+[connection signal="value_changed" from="CanvasLayer/DataPanel/currentAnimation" to="." method="_on_current_animation_value_changed"]
+[connection signal="close_requested" from="CanvasLayer/Window" to="." method="_on_window_close_requested"]
+[connection signal="mouse_entered" from="CanvasLayer/Window/CodeEdit" to="." method="_on_code_edit_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/Window/CodeEdit" to="." method="_on_code_edit_mouse_exited"]

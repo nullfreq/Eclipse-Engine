@@ -1,0 +1,115 @@
+[gd_scene load_steps=15 format=3 uid="uid://dt2wynuwedldw"]
+
+[ext_resource type="Texture2D" uid="uid://bxy3ijvoyme8h" path="res://assets/images/stages/mainStage/stageback.png" id="1_gfstx"]
+[ext_resource type="Shader" path="res://assets/shaders/BayerDither.gdshader" id="2_weqal"]
+[ext_resource type="Texture2D" uid="uid://dkuww5gahdkef" path="res://assets/images/stages/mainStage/stagefront.png" id="3_jvyst"]
+[ext_resource type="Shader" path="res://assets/shaders/blur.gdshader" id="4_0msl1"]
+[ext_resource type="PackedScene" uid="uid://c1t48mfuiwadk" path="res://scenes/editorShit/chartEditor/EditorGrid.tscn" id="4_grkg0"]
+[ext_resource type="SpriteFrames" uid="uid://bd31nqfpeg7do" path="res://assets/images/characters/gf_assets.xml" id="5_rjs1s"]
+[ext_resource type="Script" path="res://scenes/gameplay/Character.gd" id="6_sd62s"]
+[ext_resource type="Shader" path="res://assets/shaders/monochromeALT.gdshader" id="7_0fx4t"]
+[ext_resource type="SpriteFrames" uid="uid://85culqwi34oj" path="res://assets/images/characters/Sonic_EXE_Assets.xml" id="8_7kmg5"]
+[ext_resource type="SpriteFrames" uid="uid://cxaqoveqijn3n" path="res://assets/images/characters/BOYFRIEND.xml" id="9_k1vgu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ritce"]
+shader = ExtResource("2_weqal")
+shader_parameter/levels = 5
+shader_parameter/threshold = 1.0
+shader_parameter/colors = 2
+shader_parameter/pixelate = 4
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m81x5"]
+shader = ExtResource("4_0msl1")
+shader_parameter/lod = 5.0
+shader_parameter/mix_percentage = 0.3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cogdh"]
+shader = ExtResource("7_0fx4t")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_djv7p"]
+shader = ExtResource("2_weqal")
+shader_parameter/levels = 16
+shader_parameter/threshold = 1.0
+shader_parameter/colors = 1
+shader_parameter/pixelate = 10
+
+[node name="Stage" type="Node2D"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.9, 0.9)
+
+[node name="StageBack" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+modulate = Color(0, 1, 1, 1)
+position = Vector2(-600, -200)
+texture = ExtResource("1_gfstx")
+centered = false
+
+[node name="StageFront" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+material = SubResource("ShaderMaterial_ritce")
+position = Vector2(-650, 600)
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("3_jvyst")
+centered = false
+
+[node name="ParallaxBackground2" type="ParallaxBackground" parent="."]
+layer = 0
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground2"]
+motion_scale = Vector2(2, 2)
+motion_offset = Vector2(8, 0)
+
+[node name="ColorRect" type="ColorRect" parent="ParallaxBackground2/ParallaxLayer"]
+offset_left = 1186.0
+offset_top = 292.0
+offset_right = 1420.0
+offset_bottom = 404.0
+
+[node name="EditorGrid" parent="ParallaxBackground2/ParallaxLayer" instance=ExtResource("4_grkg0")]
+offset_left = 760.0
+offset_top = 400.0
+offset_right = 760.0
+offset_bottom = 400.0
+width = 16
+height = 10
+squareSize = 10
+primaryColor = Color(0.647059, 0.164706, 0.164706, 1)
+secondaryColor = Color(1, 0.843137, 0, 1)
+
+[node name="GF" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_m81x5")
+position = Vector2(400, 130)
+sprite_frames = ExtResource("5_rjs1s")
+animation = &"GF Dancing Beat instance 1"
+frame = 29
+frame_progress = 1.0
+centered = false
+offset = Vector2(0, -9)
+script = ExtResource("6_sd62s")
+character = "gf"
+
+[node name="Dad" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+material = SubResource("ShaderMaterial_cogdh")
+position = Vector2(100, 100)
+sprite_frames = ExtResource("8_7kmg5")
+animation = &"SONICmoveIDLE"
+frame = 10
+frame_progress = 1.0
+centered = false
+script = ExtResource("6_sd62s")
+character = "luis"
+
+[node name="BF" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+material = SubResource("ShaderMaterial_djv7p")
+position = Vector2(1399, -164)
+sprite_frames = ExtResource("9_k1vgu")
+animation = &"BF idle dance"
+frame = 13
+frame_progress = 1.0
+centered = false
+offset = Vector2(5, 0)
+script = ExtResource("6_sd62s")
+isPlayer = true

@@ -1,0 +1,12 @@
+{
+	"animations": {
+		"idle": {
+			"offsetX": 0,
+			"offsetY": 0,
+			"source": "BF idle dance"
+		}
+	},
+	"flipX": true,
+	"isPlayer": true,
+	"spritesheet": "BOYFRIEND"
+}

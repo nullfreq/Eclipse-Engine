@@ -1,0 +1,41 @@
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://bhdsqhwg8v62n"]
+
+[ext_resource type="Texture2D" uid="uid://bqshoq10234ic" path="res://assets/images/editors/chart/down.png" id="1_phrm1"]
+[ext_resource type="Texture2D" uid="uid://cac8067eiwluh" path="res://assets/images/editors/chart/left.png" id="2_5jmkf"]
+[ext_resource type="Texture2D" uid="uid://nkbkfc7mw7mt" path="res://assets/images/editors/chart/right.png" id="3_j0h66"]
+[ext_resource type="Texture2D" uid="uid://t6uqv2nbko57" path="res://assets/images/editors/chart/up.png" id="4_abit8"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_phrm1")
+}],
+"loop": false,
+"name": &"down",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_5jmkf")
+}],
+"loop": false,
+"name": &"left",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_j0h66")
+}],
+"loop": false,
+"name": &"right",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_abit8")
+}],
+"loop": false,
+"name": &"up",
+"speed": 0.0
+}]

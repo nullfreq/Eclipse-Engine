@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="tacoman.png">
+	<!-- Created with Adobe Animate version 22.0.8.217 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Shell0000" x="0" y="0" width="128" height="106" frameX="-7" frameY="0" frameWidth="151" frameHeight="106"/>
+	<SubTexture name="Shell0001" x="0" y="0" width="128" height="106" frameX="-7" frameY="0" frameWidth="151" frameHeight="106"/>
+	<SubTexture name="Shell0002" x="128" y="0" width="133" height="92" frameX="-2" frameY="-14" frameWidth="151" frameHeight="106"/>
+	<SubTexture name="Shell0003" x="128" y="0" width="133" height="92" frameX="-2" frameY="-14" frameWidth="151" frameHeight="106"/>
+	<SubTexture name="Shell0004" x="261" y="0" width="135" height="81" frameX="0" frameY="-14" frameWidth="151" frameHeight="106"/>
+	<SubTexture name="Shell0005" x="261" y="0" width="135" height="81" frameX="0" frameY="-14" frameWidth="151" frameHeight="106"/>
+	<SubTexture name="Shell0006" x="0" y="106" width="130" height="106" frameX="-15" frameY="0" frameWidth="151" frameHeight="106"/>
+	<SubTexture name="Shell0007" x="0" y="106" width="130" height="106" frameX="-15" frameY="0" frameWidth="151" frameHeight="106"/>
+	<SubTexture name="Shell0008" x="130" y="106" width="131" height="99" frameX="-14" frameY="-7" frameWidth="151" frameHeight="106"/>
+	<SubTexture name="Shell0009" x="130" y="106" width="131" height="99" frameX="-14" frameY="-7" frameWidth="151" frameHeight="106"/>
+	<SubTexture name="Shell0010" x="261" y="106" width="137" height="81" frameX="-14" frameY="-14" frameWidth="151" frameHeight="106"/>
+	<SubTexture name="Shell0011" x="261" y="106" width="137" height="81" frameX="-14" frameY="-14" frameWidth="151" frameHeight="106"/>
+</TextureAtlas>

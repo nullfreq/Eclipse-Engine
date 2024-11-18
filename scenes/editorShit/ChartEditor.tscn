@@ -1,0 +1,583 @@
+[gd_scene load_steps=15 format=3 uid="uid://bpwf3d6gtbb5h"]
+
+[ext_resource type="Script" path="res://scenes/editorShit/ChartEditor.gd" id="1_snqlc"]
+[ext_resource type="PackedScene" uid="uid://c1t48mfuiwadk" path="res://scenes/editorShit/chartEditor/EditorGrid.tscn" id="2_0jjrj"]
+[ext_resource type="Texture2D" uid="uid://d3aytoonip82o" path="res://assets/images/menus/menuDesat.png" id="2_jp45d"]
+[ext_resource type="Shader" path="res://assets/shaders/monochromeALT.gdshader" id="3_er18k"]
+[ext_resource type="Script" path="res://scenes/editorShit/chartEditor/ChartNote.gd" id="3_i5k6m"]
+[ext_resource type="PackedScene" uid="uid://cwagfrc62k3fo" path="res://scenes/editorShit/chartEditor/WaveformViz.tscn" id="3_iu868"]
+[ext_resource type="Texture2D" uid="uid://bwcxv1o02lhgw" path="res://assets/images/gameplay/icons/icon-dad.png" id="4_2580y"]
+[ext_resource type="Texture2D" uid="uid://cqqar044hkk7a" path="res://assets/images/gameplay/icons/icon-bf.png" id="5_vpvb8"]
+[ext_resource type="SpriteFrames" uid="uid://blw0knkrbhg1b" path="res://assets/images/editors/tacoman.xml" id="6_1ika8"]
+[ext_resource type="AudioStream" uid="uid://bw1opdrlwl8kg" path="res://assets/sounds/chartingSounds/hitNoteOpponent.ogg" id="8_q3o2t"]
+[ext_resource type="AudioStream" uid="uid://dbkl5js8blq2b" path="res://assets/sounds/chartingSounds/hitNotePlayer.ogg" id="9_mlv3q"]
+[ext_resource type="AudioStream" uid="uid://bg0x6fwvf0cr6" path="res://assets/sounds/chartingSounds/metronome1.ogg" id="10_wrp4l"]
+[ext_resource type="AudioStream" uid="uid://dk1qfv5dkj6qu" path="res://assets/sounds/chartingSounds/metronome2.ogg" id="11_30q40"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_63sby"]
+shader = ExtResource("3_er18k")
+
+[node name="ChartEditor" type="Node2D"]
+script = ExtResource("1_snqlc")
+
+[node name="BG" type="Sprite2D" parent="."]
+modulate = Color(0.956863, 0.643137, 0.376471, 1)
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("2_jp45d")
+offset = Vector2(576, 324)
+
+[node name="General HUD" type="CanvasLayer" parent="."]
+
+[node name="Notes" type="CanvasLayer" parent="General HUD"]
+layer = 0
+
+[node name="WaveformViz" parent="General HUD/Notes" instance=ExtResource("3_iu868")]
+z_index = -1
+offset_left = 120.0
+offset_top = 40.0
+offset_right = -840.0
+offset_bottom = -40.0
+
+[node name="EditorGrid" parent="General HUD/Notes" instance=ExtResource("2_0jjrj")]
+z_index = -2
+offset_left = 120.0
+offset_top = 40.0
+offset_right = -1000.0
+offset_bottom = -40.0
+mouse_filter = 1
+
+[node name="EditorGrid2" parent="General HUD/Notes" instance=ExtResource("2_0jjrj")]
+z_index = -2
+offset_left = 280.0
+offset_top = 40.0
+offset_right = -840.0
+offset_bottom = -40.0
+mouse_filter = 1
+
+[node name="EditorGrid3" parent="General HUD/Notes" instance=ExtResource("2_0jjrj")]
+z_index = -2
+offset_left = 80.0
+offset_top = 40.0
+offset_right = -1160.0
+offset_bottom = -40.0
+mouse_filter = 1
+width = 1
+primaryColor = Color(0.941176, 0.972549, 1, 1)
+secondaryColor = Color(0.690196, 0.768627, 0.870588, 1)
+
+[node name="LandRect" type="ColorRect" parent="General HUD/Notes"]
+visible = false
+z_index = -1
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 1
+color = Color(0.662745, 0.662745, 0.662745, 1)
+
+[node name="DUMB" type="Line2D" parent="General HUD/Notes"]
+z_index = -1
+points = PackedVector2Array(116, 40, 444, 40)
+width = 4.0
+default_color = Color(1, 0.549, 0, 0.5)
+
+[node name="DUMB2" type="Line2D" parent="General HUD/Notes"]
+z_index = -1
+position = Vector2(0, 160)
+points = PackedVector2Array(116, 40, 444, 40)
+width = 4.0
+default_color = Color(1, 0.549, 0, 0.5)
+
+[node name="DUMB3" type="Line2D" parent="General HUD/Notes"]
+z_index = -1
+position = Vector2(0, 320)
+points = PackedVector2Array(116, 40, 444, 40)
+width = 4.0
+default_color = Color(1, 0.549, 0, 0.5)
+
+[node name="DUMB4" type="Line2D" parent="General HUD/Notes"]
+z_index = -1
+position = Vector2(0, 480)
+points = PackedVector2Array(116, 40, 444, 40)
+width = 4.0
+default_color = Color(1, 0.549, 0, 0.5)
+
+[node name="DUMB5" type="Line2D" parent="General HUD/Notes"]
+z_index = -1
+position = Vector2(0, 640)
+points = PackedVector2Array(116, 40, 444, 40)
+width = 4.0
+default_color = Color(1, 0.549, 0, 0.5)
+
+[node name="Divider" type="Line2D" parent="General HUD/Notes"]
+points = PackedVector2Array(280, 40, 280, 680)
+width = 4.0
+default_color = Color(0.956863, 0.643137, 0.376471, 1)
+antialiased = true
+
+[node name="SongPosIndic8r" type="Line2D" parent="General HUD/Notes"]
+visible = false
+points = PackedVector2Array(116, 40, 444, 40)
+width = 4.0
+default_color = Color(1, 0, 0, 0.5)
+
+[node name="FakeIndicator" type="Line2D" parent="General HUD/Notes"]
+z_index = 666
+points = PackedVector2Array(116, 40, 444, 40)
+width = 4.0
+default_color = Color(0.956863, 0.643137, 0.376471, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+
+[node name="OppIcon" type="Sprite2D" parent="General HUD/Notes"]
+position = Vector2(200, 20)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("4_2580y")
+hframes = 2
+
+[node name="PlayerIcon" type="Sprite2D" parent="General HUD/Notes"]
+position = Vector2(360, 20)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("5_vpvb8")
+hframes = 2
+
+[node name="Panel" type="Panel" parent="General HUD"]
+offset_left = 560.0
+offset_top = 40.0
+offset_right = 1160.0
+offset_bottom = 520.0
+mouse_filter = 1
+
+[node name="TabContainer" type="TabContainer" parent="General HUD/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 1
+tab_alignment = 1
+current_tab = 0
+use_hidden_tabs_for_min_size = true
+
+[node name="Song Info" type="TabBar" parent="General HUD/Panel/TabContainer"]
+layout_mode = 2
+scrolling_enabled = false
+metadata/_tab_index = 0
+
+[node name="BPM" type="HBoxContainer" parent="General HUD/Panel/TabContainer/Song Info"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 26.0
+offset_right = 161.0
+offset_bottom = 49.0
+alignment = 1
+
+[node name="BPMM" type="Label" parent="General HUD/Panel/TabContainer/Song Info/BPM"]
+layout_mode = 2
+text = "BPM:"
+vertical_alignment = 1
+
+[node name="bpmChanger" type="SpinBox" parent="General HUD/Panel/TabContainer/Song Info/BPM"]
+layout_mode = 2
+min_value = 1.0
+max_value = 1000.0
+value = 100.0
+update_on_text_changed = true
+
+[node name="Speed" type="HBoxContainer" parent="General HUD/Panel/TabContainer/Song Info"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 66.0
+offset_right = 189.0
+offset_bottom = 89.0
+alignment = 1
+
+[node name="SPEEDD" type="Label" parent="General HUD/Panel/TabContainer/Song Info/Speed"]
+layout_mode = 2
+text = "Speed:"
+vertical_alignment = 1
+
+[node name="speedChanger" type="SpinBox" parent="General HUD/Panel/TabContainer/Song Info/Speed"]
+layout_mode = 2
+min_value = 0.1
+max_value = 1000.0
+step = 0.1
+value = 1.0
+update_on_text_changed = true
+
+[node name="Stage" type="HBoxContainer" parent="General HUD/Panel/TabContainer/Song Info"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 106.0
+offset_right = 169.0
+offset_bottom = 129.0
+alignment = 1
+
+[node name="Stage" type="Label" parent="General HUD/Panel/TabContainer/Song Info/Stage"]
+layout_mode = 2
+text = "Stage:"
+vertical_alignment = 1
+
+[node name="stageSelector" type="OptionButton" parent="General HUD/Panel/TabContainer/Song Info/Stage"]
+layout_mode = 2
+
+[node name="ButtonContainer" type="BoxContainer" parent="General HUD/Panel/TabContainer/Song Info"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = -45.0
+offset_right = 293.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 2
+
+[node name="Load" type="Button" parent="General HUD/Panel/TabContainer/Song Info/ButtonContainer"]
+layout_mode = 2
+focus_mode = 0
+text = "Load JSON"
+
+[node name="Save" type="Button" parent="General HUD/Panel/TabContainer/Song Info/ButtonContainer"]
+layout_mode = 2
+focus_mode = 0
+text = "Save JSON"
+
+[node name="New" type="Button" parent="General HUD/Panel/TabContainer/Song Info/ButtonContainer"]
+layout_mode = 2
+focus_mode = 0
+text = "New JSON"
+
+[node name="LoadJSON" type="FileDialog" parent="General HUD/Panel/TabContainer/Song Info"]
+title = "Open a File"
+initial_position = 1
+size = Vector2i(480, 480)
+ok_button_text = "Open"
+dialog_hide_on_ok = true
+file_mode = 0
+root_subfolder = "res://assets/songs/"
+filters = PackedStringArray("*.json")
+
+[node name="SaveJSON" type="FileDialog" parent="General HUD/Panel/TabContainer/Song Info"]
+auto_translate_mode = 1
+initial_position = 1
+size = Vector2i(480, 480)
+ok_button_text = "Save"
+dialog_hide_on_ok = true
+root_subfolder = "res://assets/songs/"
+filters = PackedStringArray("*.json")
+
+[node name="NewChart" type="FileDialog" parent="General HUD/Panel/TabContainer/Song Info"]
+auto_translate_mode = 1
+title = "Make a new chart"
+initial_position = 1
+size = Vector2i(480, 480)
+ok_button_text = "New"
+dialog_hide_on_ok = true
+root_subfolder = "res://assets/songs/"
+filters = PackedStringArray("*.json")
+
+[node name="ChartInfo" type="Window" parent="General HUD/Panel/TabContainer/Song Info"]
+title = "Chart Info"
+initial_position = 1
+size = Vector2i(160, 160)
+visible = false
+
+[node name="BoxContainer" type="BoxContainer" parent="General HUD/Panel/TabContainer/Song Info/ChartInfo"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.5
+offset_top = -25.0
+offset_right = 60.5
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+vertical = true
+
+[node name="BPM" type="HBoxContainer" parent="General HUD/Panel/TabContainer/Song Info/ChartInfo/BoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="BPMM" type="Label" parent="General HUD/Panel/TabContainer/Song Info/ChartInfo/BoxContainer/BPM"]
+layout_mode = 2
+text = "BPM:"
+
+[node name="bpmChanger" type="SpinBox" parent="General HUD/Panel/TabContainer/Song Info/ChartInfo/BoxContainer/BPM"]
+layout_mode = 2
+min_value = 1.0
+max_value = 1000.0
+value = 100.0
+update_on_text_changed = true
+
+[node name="Speed" type="HBoxContainer" parent="General HUD/Panel/TabContainer/Song Info/ChartInfo/BoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="SPEEDD" type="Label" parent="General HUD/Panel/TabContainer/Song Info/ChartInfo/BoxContainer/Speed"]
+layout_mode = 2
+text = "Speed:"
+
+[node name="speedChanger" type="SpinBox" parent="General HUD/Panel/TabContainer/Song Info/ChartInfo/BoxContainer/Speed"]
+layout_mode = 2
+min_value = 0.1
+max_value = 1000.0
+step = 0.1
+value = 1.0
+update_on_text_changed = true
+
+[node name="Okay" type="Button" parent="General HUD/Panel/TabContainer/Song Info/ChartInfo/BoxContainer"]
+layout_mode = 2
+text = "Make Chart!"
+
+[node name="Whimsy" type="RichTextLabel" parent="General HUD/Panel/TabContainer/Song Info"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -117.0
+offset_right = 144.0
+offset_bottom = -5.0
+grow_vertical = 0
+bbcode_enabled = true
+text = "lil taco man, requested by SkyHighSilly"
+scroll_active = false
+autowrap_mode = 1
+
+[node name="Tacoman" type="AnimatedSprite2D" parent="General HUD/Panel/TabContainer/Song Info/Whimsy"]
+position = Vector2(17, 48)
+scale = Vector2(0.5, 0.5)
+sprite_frames = ExtResource("6_1ika8")
+animation = &"Shell"
+centered = false
+
+[node name="Section" type="TabBar" parent="General HUD/Panel/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="CFB" type="HBoxContainer" parent="General HUD/Panel/TabContainer/Section"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 26.0
+offset_right = 161.0
+offset_bottom = 49.0
+alignment = 1
+
+[node name="CFBB" type="Label" parent="General HUD/Panel/TabContainer/Section/CFB"]
+layout_mode = 2
+text = "Camera focused on BF?"
+
+[node name="CFBtoggle" type="CheckButton" parent="General HUD/Panel/TabContainer/Section/CFB"]
+layout_mode = 2
+
+[node name="SwapNotes" type="Button" parent="General HUD/Panel/TabContainer/Section"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 57.0
+offset_right = 48.0
+offset_bottom = 65.0
+text = "SWAP NOTES!"
+
+[node name="Events" type="TabBar" parent="General HUD/Panel/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="EventList" type="ItemList" parent="General HUD/Panel/TabContainer/Events"]
+layout_mode = 2
+offset_left = 20.0
+offset_top = 17.0
+offset_right = 240.0
+offset_bottom = 397.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.0
+
+[node name="EventProperties" type="Panel" parent="General HUD/Panel/TabContainer/Events"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -340.0
+offset_top = -211.5
+offset_right = -20.0
+offset_bottom = 168.5
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Current Section JSON" type="TabBar" parent="General HUD/Panel/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 3
+
+[node name="View" type="TextEdit" parent="General HUD/Panel/TabContainer/Current Section JSON"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_readonly_color = Color(1, 1, 1, 1)
+placeholder_text = "JSON shit HERE!"
+editable = false
+wrap_mode = 1
+indent_wrapped_lines = true
+scroll_past_end_of_file = true
+
+[node name="ChartShit" type="Panel" parent="General HUD"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -720.0
+offset_top = -200.0
+offset_right = -120.0
+offset_bottom = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Section" type="Label" parent="General HUD/ChartShit"]
+layout_mode = 1
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 74.0
+offset_bottom = 30.0
+theme_override_font_sizes/font_size = 16
+text = "Section"
+
+[node name="SongPos" type="Label" parent="General HUD/ChartShit"]
+layout_mode = 1
+offset_left = 8.0
+offset_top = 24.0
+offset_right = 74.0
+offset_bottom = 46.0
+theme_override_font_sizes/font_size = 16
+text = "SongPos"
+
+[node name="HitsoundsLabel" type="Label" parent="General HUD/ChartShit"]
+layout_mode = 1
+offset_left = 8.0
+offset_top = 40.0
+offset_right = 74.0
+offset_bottom = 62.0
+theme_override_font_sizes/font_size = 16
+text = "Hitsounds?"
+
+[node name="HitsoundsCheck" type="CheckButton" parent="General HUD/ChartShit"]
+layout_mode = 0
+offset_left = 105.0
+offset_top = 37.0
+offset_right = 149.0
+offset_bottom = 61.0
+focus_mode = 0
+
+[node name="MetronomeLabel" type="Label" parent="General HUD/ChartShit"]
+layout_mode = 1
+offset_left = 8.0
+offset_top = 56.0
+offset_right = 102.0
+offset_bottom = 78.0
+theme_override_font_sizes/font_size = 16
+text = "Metronome?"
+
+[node name="MetronomeCheck" type="CheckButton" parent="General HUD/ChartShit"]
+layout_mode = 0
+offset_left = 105.0
+offset_top = 53.0
+offset_right = 149.0
+offset_bottom = 77.0
+focus_mode = 0
+
+[node name="PlaybackSpeedLabel" type="Label" parent="General HUD/ChartShit"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 72.0
+offset_right = 168.0
+offset_bottom = 94.0
+theme_override_font_sizes/font_size = 16
+text = "Playback Speed: 1"
+
+[node name="PlaybackSpeedSlider" type="HSlider" parent="General HUD/ChartShit"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -404.0
+offset_top = -7.0
+offset_right = -268.0
+offset_bottom = 9.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/center_grabber = 1
+min_value = 0.25
+max_value = 4.0
+step = 0.05
+value = 1.0
+
+[node name="PreviewNote" type="AnimatedSprite2D" parent="General HUD"]
+visible = false
+modulate = Color(1, 1, 1, 0.5)
+material = SubResource("ShaderMaterial_63sby")
+centered = false
+script = ExtResource("3_i5k6m")
+
+[node name="Inst" type="AudioStreamPlayer" parent="."]
+bus = &"Inst"
+
+[node name="Voices" type="AudioStreamPlayer" parent="."]
+bus = &"VoicesOpp"
+
+[node name="HitNoteOpp" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_q3o2t")
+volume_db = -5.193
+bus = &"SFX"
+parameters/looping = false
+
+[node name="HitNotePlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_mlv3q")
+volume_db = -5.193
+bus = &"SFX"
+parameters/looping = false
+
+[node name="Metronome1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_wrp4l")
+volume_db = -7.959
+bus = &"SFX"
+
+[node name="Metronome2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_30q40")
+volume_db = -7.959
+bus = &"SFX"
+
+[node name="HitsoundDelay" type="Timer" parent="."]
+wait_time = 0.235
+one_shot = true
+
+[connection signal="value_changed" from="General HUD/Panel/TabContainer/Song Info/BPM/bpmChanger" to="." method="_on_bpm_changer_value_changed"]
+[connection signal="value_changed" from="General HUD/Panel/TabContainer/Song Info/Speed/speedChanger" to="." method="_on_speed_changer_value_changed"]
+[connection signal="pressed" from="General HUD/Panel/TabContainer/Song Info/ButtonContainer/Load" to="." method="_on_load_pressed"]
+[connection signal="pressed" from="General HUD/Panel/TabContainer/Song Info/ButtonContainer/Save" to="." method="_on_save_pressed"]
+[connection signal="pressed" from="General HUD/Panel/TabContainer/Song Info/ButtonContainer/New" to="." method="_on_new_pressed"]
+[connection signal="file_selected" from="General HUD/Panel/TabContainer/Song Info/LoadJSON" to="." method="_on_load_json_file_selected"]
+[connection signal="file_selected" from="General HUD/Panel/TabContainer/Song Info/SaveJSON" to="." method="_on_save_json_file_selected"]
+[connection signal="file_selected" from="General HUD/Panel/TabContainer/Song Info/NewChart" to="." method="_on_new_chart_file_selected"]
+[connection signal="pressed" from="General HUD/Panel/TabContainer/Song Info/ChartInfo/BoxContainer/Okay" to="." method="_on_okay_pressed"]
+[connection signal="button_up" from="General HUD/Panel/TabContainer/Section/CFB/CFBtoggle" to="." method="_on_cf_btoggle_button_up"]
+[connection signal="pressed" from="General HUD/Panel/TabContainer/Section/SwapNotes" to="." method="_on_swap_notes_pressed"]
+[connection signal="item_selected" from="General HUD/Panel/TabContainer/Events/EventList" to="." method="_on_event_list_item_selected"]
+[connection signal="toggled" from="General HUD/ChartShit/HitsoundsCheck" to="." method="_on_hitsounds_check_toggled"]
+[connection signal="toggled" from="General HUD/ChartShit/MetronomeCheck" to="." method="_on_metronome_check_toggled"]
+[connection signal="value_changed" from="General HUD/ChartShit/PlaybackSpeedSlider" to="." method="_on_playback_speed_slider_value_changed"]

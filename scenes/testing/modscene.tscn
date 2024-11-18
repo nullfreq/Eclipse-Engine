@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://cxxiw55g10dp2"]
+
+[ext_resource type="Shader" path="res://assets/shaders/BayerDither.gdshader" id="1_pq5cq"]
+[ext_resource type="VideoStream" path="res://assets/videos/ughCutscene.mp4" id="2_sma1f"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_013sy"]
+width = 16
+height = 16
+invert = true
+in_3d_space = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_djvs0"]
+shader = ExtResource("1_pq5cq")
+shader_parameter/levels = 2
+shader_parameter/threshold = 0.25
+shader_parameter/colors = 1
+shader_parameter/pixelate = 1
+shader_parameter/dither_texture = SubResource("NoiseTexture2D_013sy")
+
+[node name="Modscene" type="Node2D"]
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+material = SubResource("ShaderMaterial_djvs0")
+offset_right = 1280.0
+offset_bottom = 720.0
+stream = ExtResource("2_sma1f")
+autoplay = true
+expand = true

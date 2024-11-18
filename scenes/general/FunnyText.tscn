@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://k23i0spxppyh"]
+
+[ext_resource type="FontFile" uid="uid://dgdopiw30ahq6" path="res://assets/images/general/alphabetBOLD.png" id="1_lxhav"]
+
+[sub_resource type="FontVariation" id="FontVariation_0pelb"]
+baseline_offset = 0.455
+
+[sub_resource type="FontVariation" id="FontVariation_iqps4"]
+fallbacks = Array[Font]([SubResource("FontVariation_0pelb")])
+base_font = ExtResource("1_lxhav")
+spacing_glyph = -16
+
+[node name="FunnyText" type="Label"]
+offset_right = 1.0
+offset_bottom = 80.0
+theme_override_fonts/font = SubResource("FontVariation_iqps4")
+theme_override_font_sizes/font_size = 80
+horizontal_alignment = 1
+vertical_alignment = 1

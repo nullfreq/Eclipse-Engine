@@ -1,0 +1,57 @@
+{
+	"animations": {
+		"idle": {
+			"offsetX": 5,
+			"offsetY": 0,
+			"source": "BF idle dance"
+		},
+		"singDOWN": {
+			"offsetX": 10,
+			"offsetY": 50,
+			"source": "BF NOTE DOWN"
+		},
+		"singLEFT": {
+			"offsetX": -12,
+			"offsetY": 6,
+			"source": "BF NOTE LEFT"
+		},
+		"singRIGHT": {
+			"offsetX": 38,
+			"offsetY": 7,
+			"source": "BF NOTE RIGHT"
+		},
+		"singUP": {
+			"offsetX": 29,
+			"offsetY": -27,
+			"source": "BF NOTE UP"
+		},
+		"hey": {
+			"offsetX": 3,
+			"offsetY": -4,
+			"source": "BF HEY!!"
+		},
+		"singLEFTmiss": {
+			"offsetX": -10,
+			"offsetY": -22,
+			"source": "BF NOTE LEFT MISS"
+		},
+		"singDOWNmiss": {
+			"offsetX": 11,
+			"offsetY": 19,
+			"source": "BF NOTE DOWN MISS"
+		},
+		"singUPmiss": {
+			"offsetX": 29,
+			"offsetY": -24,
+			"source": "BF NOTE UP MISS"
+		},
+		"singRIGHTmiss": {
+			"offsetX": 30,
+			"offsetY": -21,
+			"source": "BF NOTE RIGHT MISS"
+		}
+	},
+	"flipX": false,
+	"isPlayer": true,
+	"spritesheet": "BOYFRIEND"
+}

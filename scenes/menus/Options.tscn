@@ -1,0 +1,96 @@
+[gd_scene load_steps=4 format=3 uid="uid://coytg0p8mu28b"]
+
+[ext_resource type="Texture2D" uid="uid://bkl244pfx60t6" path="res://assets/images/menus/menuBGMagenta.png" id="1_h6vde"]
+[ext_resource type="Script" path="res://scenes/menus/Options.gd" id="1_mtg4f"]
+[ext_resource type="PackedScene" uid="uid://k23i0spxppyh" path="res://scenes/general/FunnyText.tscn" id="3_sw8f3"]
+
+[node name="Options" type="Node2D"]
+script = ExtResource("1_mtg4f")
+
+[node name="BG" type="Sprite2D" parent="."]
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("1_h6vde")
+offset = Vector2(576, 324)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = 40.0
+offset_right = -40.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Options" type="BoxContainer" parent="CanvasLayer/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -207.0
+offset_top = -95.0
+offset_right = 207.0
+offset_bottom = 95.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+vertical = true
+
+[node name="Audio" type="BoxContainer" parent="CanvasLayer/Panel/Options"]
+layout_mode = 2
+alignment = 1
+vertical = true
+
+[node name="SectionName" parent="CanvasLayer/Panel/Options/Audio" instance=ExtResource("3_sw8f3")]
+layout_mode = 2
+text = "Audio"
+
+[node name="BGMLabel" type="Label" parent="CanvasLayer/Panel/Options/Audio"]
+layout_mode = 2
+text = "BGM?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BGMToggle" type="CheckButton" parent="CanvasLayer/Panel/Options/Audio/BGMLabel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 26.0
+offset_top = -12.0
+offset_right = 70.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+
+[node name="Controls" type="BoxContainer" parent="CanvasLayer/Panel/Options"]
+layout_mode = 2
+alignment = 1
+vertical = true
+
+[node name="SectionName" parent="CanvasLayer/Panel/Options/Controls" instance=ExtResource("3_sw8f3")]
+layout_mode = 2
+text = "Controls"
+
+[node name="Info" type="Label" parent="CanvasLayer/Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -422.0
+offset_top = -38.0
+offset_right = 422.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Press Escape to exit to the main menu and save your changes!"
